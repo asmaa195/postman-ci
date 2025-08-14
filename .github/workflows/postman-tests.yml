@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   test:
@@ -20,5 +23,5 @@ jobs:
       - name: Install Newman
         run: npm install -g newman
 
-      - name: Run Postman Collection
-        run: newman run your-collection-file.json
+      - name: Run Postman collection
+        run: newman run MyFirstCollection.json
