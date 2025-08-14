@@ -1,0 +1,101 @@
+{
+	"info": {
+		"_postman_id": "ada840f5-bf0a-48f7-ab16-e9c81116f1e4",
+		"name": "Asmaa_Test_Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40143230",
+		"_collection_link": "https://asmaa4-0018.postman.co/workspace/team~8dfe2d9d-35b2-407b-892f-e2034363d55a/collection/40143230-ada840f5-bf0a-48f7-ab16-e9c81116f1e4?action=share&source=collection_link&creator=40143230"
+	},
+	"item": [
+		{
+			"name": "GET Post 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Has id and title\", function () {\r",
+							"  const json = pm.response.json();\r",
+							"  pm.expect(json).to.have.property(\"id\");\r",
+							"  pm.expect(json).to.have.property(\"title\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts/1",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Create Post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 201\", () => {\r",
+							"  pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Response has id\", () => {\r",
+							"  const json = pm.response.json();\r",
+							"  pm.expect(json).to.have.property(\"id\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"foo\",\r\n  \"body\": \"bar\",\r\n  \"userId\": 1\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
